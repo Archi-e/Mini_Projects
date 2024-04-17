@@ -42,9 +42,14 @@ public class GameController {
     }
 
     public void replay(Game game) throws InterruptedException {
-        List<Board> boardStates = game.getBoardStates();
-        for(Board board: boardStates){
+        int i=0;
+        int count = 1;
+        List<Move> moves = game.getMoves();
+        for(Board board: game.getBoardStates()){
+            System.out.println("Move "+ count++ +" Played by "+ moves.get(i++).getPlayer().getName());
             board.displayBoard();
+            System.out.println();
+            Thread.sleep(3000);
         }
     }
 }

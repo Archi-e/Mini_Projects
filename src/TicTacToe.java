@@ -38,11 +38,10 @@ public class TicTacToe {
             Player newPlayer = new Player(id++, playerName, playerSymbol, PlayerType.HUMAN);
             players.add(newPlayer);
         }
-
+        //List<Board> boardStates = new ArrayList<>();
         Collections.shuffle(players);
         Game game = gameController.createGame(dimension, players, WinningStrategyName.ORDERONE);
         int playerIndex = -1;
-
         while(game.getGameStatus().equals(GameStatus.IN_PROGRESS)){
             System.out.println("Current Board Status:");
             gameController.displayBoard(game);
@@ -51,8 +50,7 @@ public class TicTacToe {
 
             Move moveplayed = gameController.executeMove(game, players.get(playerIndex));
             game.getMoves().add(moveplayed);
-            game.getBoardStates().add(game.getBoard());
-
+            game.getBoardStates().add(game.getBoard().copy());
             Player winner = gameController.checkWinner(game, moveplayed);
             if(winner != null){
                 System.out.println("##### WINNER IS: "+winner.getName()+" #####");
@@ -64,7 +62,7 @@ public class TicTacToe {
             }
 
         }
-
+        //game.setBoardStates(boardStates);
         System.out.println("Final Board Status");
         gameController.displayBoard(game);
         System.out.println("Do you want to see the replay? Y / N");
