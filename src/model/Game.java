@@ -2,6 +2,7 @@ package model;
 
 import exception.InvalidBoardDimension;
 import exception.InvalidBotCountException;
+import exception.InvalidPlayerCountException;
 import exception.SymbolNotUniqueException;
 import service.winningStrategy.WinningStrategy;
 
@@ -134,6 +135,11 @@ public class Game {
             }
 
             if(botCount > 1 || botCount < 0) throw new InvalidBotCountException("Bot count can be only be 1 or 0");
+        }
+
+        public void validatePlayerNumber(){
+            if(players.size() < dimension-2 || players.size() >= dimension)
+                throw new InvalidPlayerCountException("Player count should be N-1 or N-2");
         }
         public void validate(){
             validateDimensionOfBoard();

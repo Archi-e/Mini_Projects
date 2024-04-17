@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player {
+    int id;
     private String name;
     private char symbol;
     private PlayerType playerType;
@@ -12,7 +13,8 @@ public class Player {
 
     }
 
-    public Player(String name, char symbol, PlayerType playerType) {
+    public Player(int id, String name, char symbol, PlayerType playerType) {
+        this.id = id;
         this.name = name;
         this.symbol = symbol;
         this.playerType = playerType;
@@ -35,6 +37,14 @@ public class Player {
 
 
         return new Move(this, playedMoveCell);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
