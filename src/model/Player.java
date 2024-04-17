@@ -1,5 +1,7 @@
 package model;
 
+import exception.InvalidCellMoveException;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,8 +32,11 @@ public class Player {
         System.out.println("Enter the col number for target cell");
         int col = sc.nextInt();
 
-        Cell playedMoveCell = board.getMatrix().get(row).get(col);
 
+        Cell playedMoveCell = board.getMatrix().get(row).get(col);
+        if(playedMoveCell.getCellstate().equals(CellState.FILLED)){
+            throw new InvalidCellMoveException("This cell is already filled");
+        }
         playedMoveCell.setPlayer(this);
         playedMoveCell.setCellstate(CellState.FILLED);
 

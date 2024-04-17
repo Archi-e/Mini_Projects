@@ -46,6 +46,7 @@ public class OrderOneWinningStrategy implements WinningStrategy{
                                 ||(isCornerCell(row, col) && checkCornersForWinner(symbol))
                                 ||(isPartOfLeftDiag(row, col) && checkLeftDiagForWinner(symbol))
                                 ||(isPartOfRightDiag(row, col) && checkRightDiagForWinner(symbol)));
+        if(winnerResult) return player;
         return null;
     }
 

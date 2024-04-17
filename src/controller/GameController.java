@@ -6,6 +6,8 @@ import service.winningStrategy.WinningStrategyName;
 
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public class GameController {
     public Game createGame(int dimension, List<Player> players, WinningStrategyName winningStrategyName){
         return new Game.Builder()
@@ -39,7 +41,7 @@ public class GameController {
        return game.getWinningStrategy().checkWinner(game.getBoard(), lastMovePlayed);
     }
 
-    public void replay(Game game){
+    public void replay(Game game) throws InterruptedException {
         List<Board> boardStates = game.getBoardStates();
         for(Board board: boardStates){
             board.displayBoard();

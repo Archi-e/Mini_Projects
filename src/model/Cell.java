@@ -14,10 +14,10 @@ public class Cell {
 
     public void displayCell(){
         if(player == null){
-            System.out.println("| - |");
+            System.out.print("| - |");
         }
         else{
-            System.out.println("| "+player.getSymbol()+" |");
+            System.out.print("| "+player.getSymbol()+" |");
         }
     }
 
