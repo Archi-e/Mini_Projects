@@ -1,5 +1,6 @@
 package service.botPlayingStrategy;
 
+import exception.GameOverException;
 import model.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class RandomBotPlayingStrategy implements BotPlayingStrategy{
                 }
             }
         }
-        return null;
+        throw new GameOverException("No empty cell available, it's a draw!");
 
     }
 }
